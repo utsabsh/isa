@@ -144,3 +144,7 @@ function binary(a){
 binary(10);
 binary(15);
 binary(1025);
+
+
+
+
