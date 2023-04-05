@@ -67,3 +67,5 @@ function checkRainfall(humidity) {
 // Call the checkRainfall function with a rainfall amount (in millimeters)
 checkRainfall(30);
 CheckWeather( );
+
+CheckWeather('Dhulikhel');
