@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Meta information about the document -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Importing external resources -->
+	<title>Weather App</title>
+	<script src="https://kit.fontawesome.com/65e9802314.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href = "UtsabShrestha_2329761.css">
+	<script src=" UtsabShrestha_2329761.js" defer></script>
+</head>
+<body>
+	<!-- Main content area of the page -->
+	<div class="card">
+		<!-- Search bar for entering a city name -->
+		<div class="search">
+			<input type="text" placeholder="enter city name" 
+			spellcheck="false">
+			<button><img src="UtsabShrestha_2329761/search.png"></button>
+		</div>
+		
+		<!-- Error message for invalid city name -->
+		<div class="error">
+			<p>Invalid city name</p>
+		</div>
+		
+		<!-- Displaying weather information for the specified city -->
+		<div class="weather">
+			<!-- Weather condition icon -->
+			<img src="UtsabShrestha_2329761/rain.png" class="weather-icon">
+			
+			<!-- Temperature and city name -->
+			<h1 class="temp">22°C</h1>
+			<h2 class="city">New York</h2>
+			
+			<!-- Additional weather details -->
+			<div class="details">
+				<!-- Humidity -->
+				<div class="col">
+					<img src="UtsabShrestha_2329761/humidity.png">
+					<div>
+						<p class="humidity">50%</p>
+						<p>Humidity</p>
+					</div>
+				</div>
+				
+				<!-- Wind speed -->
+				<div class="col">
+					<img src="UtsabShrestha_2329761/wind.png">
+					<div>
+						<p class="wind">15 km/h</p>
+						<p>Wind speed</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Additional weather details (date, day, and rainfall condition) -->
+			<div class="detailss">
+				<!-- Date and day -->
+				<div class="cols">					
+					<div>						
+						<p class="dt">Date and Day:</p>						
+                    </div>
+				</div>
+				
+				<!-- Rainfall condition -->
+				<div class="cols">
+					<i class="fa-solid fa-cloud-showers-water"></i>
+					<div class="rain">Rain:</div> <span id="rainfall-condition"></span>
+				</div>
+			</div>			
+		</div>	
+	</div>
+</body>
+</html>
