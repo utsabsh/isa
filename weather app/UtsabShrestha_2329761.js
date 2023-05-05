@@ -1,9 +1,42 @@
 const apiKey="ff46499780e490138710451eed3d6b14";
-
+const timeEl = document.getElementById('time');
 
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon =document.querySelector(".weather-icon");
+const lastSixDaysBtn = document.querySelector(".last-six-days-btn");
+const lastSixDaysData = document.querySelector(".last-six-days-data");
+// Function to format date and time
+function formatDate(date, format) {
+	const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	const hoursIn12HrFormat = date.getHours() >= 13 ? date.getHours() % 12 : date.getHours();
+	const minutes = date.getMinutes();
+	const ampm = date.getHours() >= 12 ? "PM" : "AM";
+	format = format.replace("DD", daysOfWeek[date.getDay()]);
+	format = format.replace("MM", months[date.getMonth()]);
+	format = format.replace("DD", date.getDate());
+	format = format.replace("hh", hoursIn12HrFormat < 10 ? "0" + hoursIn12HrFormat : hoursIn12HrFormat);
+	format = format.replace("mm", minutes < 10 ? "0" + minutes : minutes);
+	format = format.replace("a", ampm);
+	return format;
+  }
+  
+setInterval(() => {
+    const time = new Date();
+    const month = time.getMonth();
+    const date = time.getDate();
+    const day = time.getDay();
+    const hour = time.getHours();
+    const hoursIn12HrFormat = hour >= 13 ? hour %12: hour
+    const minutes = time.getMinutes();
+    const ampm = hour >=12 ? 'PM' : 'AM'
+
+    timeEl.innerHTML = (hoursIn12HrFormat < 10? '0'+hoursIn12HrFormat : hoursIn12HrFormat) + ':' + (minutes < 10? '0'+minutes: minutes)+ ' ' + `<span id="am-pm">${ampm}</span>`
+
+    dateEl.innerHTML = days[day] + ', ' + date+ ' ' + months[month]
+
+}, 1000);
 async function CheckWeather(city){
 	const response = await fetch("https://api.openweathermap.org/data/2.5/weather?q="+ city + "&appid="+apiKey+"&units=metric");
 	var data = await response.json();
@@ -24,6 +57,9 @@ async function CheckWeather(city){
 	document.querySelector(".temp").innerHTML=Math.round(data.main.temp) + "°C";
 	document.querySelector(".humidity").innerHTML=data.main.humidity + "%";
 	document.querySelector(".wind").innerHTML=data.wind.speed + "km/h";
+	// document.querySelector(".pressure").innerHTML=math.round(data.main.pressure) ;
+	document.querySelector(".pressure").innerHTML=data.main.pressure + "%";
+
 	if(data.weather[0].main == "Clouds"){
         weatherIcon.src = "UtsabShrestha_2329761/clouds.png";
 	}else if(data.weather[0].main == "Clear"){
